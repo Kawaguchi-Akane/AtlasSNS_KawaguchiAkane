@@ -57,8 +57,8 @@ class RegisterController extends Controller
                 'mail' => $mail,
                 'password' => bcrypt($password),
             ]);
-
-            $request->session()->put('akane', $username);
+            //セッション追加
+            $request->session()->put('addname', $username);
             return redirect('added');
         }
         return view('auth.register');

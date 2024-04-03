@@ -3,7 +3,8 @@
 @section('content')
 
 <div id="clear">
-  <p>{{session('akane')}}さん</p>
+  //セッションを利用して新規登録後の画面に登録したユーザ名を表示する
+  <p>{{session('addname')}}さん</p>
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
