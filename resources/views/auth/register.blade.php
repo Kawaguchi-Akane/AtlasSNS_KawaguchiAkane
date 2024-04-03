@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- 適切なURLを入力してください -->
-{!! Form::open(['url' => '/〇〇']) !!}
+{!! Form::open() !!}
 
 <h2>新規ユーザー登録</h2>
 
@@ -24,5 +24,8 @@
 
 {!! Form::close() !!}
 
+@foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
 
 @endsection

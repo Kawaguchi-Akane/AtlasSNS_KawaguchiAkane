@@ -35,6 +35,7 @@ class LoginController extends Controller
      * @return void
      */
     public function __construct()
+    //except:入力値の一部取得（～以外取得）
     {
         $this->middleware('guest')->except('logout');
     }
