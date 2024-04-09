@@ -58,7 +58,7 @@ class RegisterController extends Controller
                 'password' => bcrypt($password),
             ]);
             //セッション追加
-            $request->session()->put('addname', $username);
+            $request->session()->put('username', $username);
             return redirect('added');
         }
         return view('auth.register');
