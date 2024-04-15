@@ -41,3 +41,6 @@ Route::get('/search','UsersController@index')->middleware('auth');
 Route::get('/follow-list','PostsController@index')->middleware('auth');
 //フォロワーリストページ
 Route::get('/follower-list','PostsController@index')->middleware('auth');
+
+//ログアウト
+Route::get('/logout','Auth\LoginController@logout');
