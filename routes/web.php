@@ -32,15 +32,16 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 //トップページ
 Route::get('/top','PostsController@index')->middleware('auth');
-
-//プロフィール編集ページ
+//プロフィールページ
+Route::get('/profile','UsersController@profile')->middleware('auth');
+//プロフィール編集ページ？
 Route::get('/profile','UsersController@profile')->middleware('auth');
 //ユーザー検索ページ
-Route::get('/search','UsersController@index')->middleware('auth');
+Route::get('/search','UsersController@search')->middleware('auth');
 //フォローリストページ
-Route::get('/follow-list','PostsController@index')->middleware('auth');
+Route::get('/follow-list','PostsController@followlist')->middleware('auth');
 //フォロワーリストページ
-Route::get('/follower-list','PostsController@index')->middleware('auth');
+Route::get('/follower-list','PostsController@followerlist')->middleware('auth');
 
 //ログアウト
 Route::get('/logout','Auth\LoginController@logout');

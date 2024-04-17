@@ -6,4 +6,4 @@ $('.menu-btn').click(function (event) {
 });
 
 //JS動くか確認用
-$(function () { alert('OK!'); });
+//$(function () { alert('OK!'); });
