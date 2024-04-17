@@ -17,21 +17,30 @@
     <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
+    <!-- 元々記述済みのjqueryスクリプト -->
+    <script src="./js/app.js"></script>
+    <!-- ↓この記述でつなげている -->
+    <script src="./js/script.js"></script>
     <!--OGPタグ/twitterカード-->
 </head>
 <body>
     <header>
         <div id = "head">
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="menu-trigger">
+
                     <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
-                <nav>
-                <ul href="tag">
+                    <!--アコーディオンメニュー-->
+                    <button type="button" class="menu-btn">
+                    <span class="inn"></span>
+                    </button>
+
+                <nav class="menu">
+                <ul>
                     <li><a href="/top">ホーム</a></li>
                     <li><a href="/profile">プロフィール</a></li>
                     <li><a href="/logout">ログアウト</a></li>
                 </ul>
-            </nav>
+                </nav>
         </div>
     </header>
     <div id="row">

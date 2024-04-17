@@ -51,6 +51,12 @@ class LoginController extends Controller
         }
         return view("auth.login");
     }
+    //プロフィール編集ページ実装
+    public function profile(Request $Request){
+        Auth::profile();
+        return redirect()->route('profile');
+
+    }
     //ログアウト実装
     public function logout(Request $request){
         Auth::logout();
