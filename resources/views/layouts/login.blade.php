@@ -24,7 +24,9 @@
         <div id = "head">
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
 
+        <div id="accordion" class="accordion-container">
                     <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
+                    </div>
                     <!--アコーディオンメニュー-->
                     <button type="button" class="menu-btn">
                     <span class="inn"></span>
@@ -32,9 +34,9 @@
 
                 <nav class="menu">
                 <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
+                    <li><a href="{{ asset('/top') }}">ホーム</a></li>
+                    <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
+                    <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
                 </ul>
                 </nav>
         </div>
@@ -64,6 +66,6 @@
     </footer>
     <!-- JS記述は下のほうに持ってくる -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="{{ asset('./js/script.js') }}"></script>
 </body>
 </html>
