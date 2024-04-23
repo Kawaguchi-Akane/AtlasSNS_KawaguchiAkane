@@ -22,24 +22,22 @@
 <body>
     <header>
         <div id = "head">
+
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+        <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
+        <!--アコーディオンメニュー-->
+        <div id = "accordion">
+        <button type="button" class="menu-btn">
+            <span class="inn"></span>
+</button>
 
-        <div id="accordion" class="accordion-container">
-                    <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
-                    </div>
-                    <!--アコーディオンメニュー-->
-                    <button type="button" class="menu-btn">
-                    <span class="inn"></span>
-                    </button>
-
-                <nav class="menu">
-                <ul>
-                    <li><a href="{{ asset('/top') }}">ホーム</a></li>
-                    <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
-                    <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
-                </ul>
-                </nav>
-        </div>
+<nav class="menu">
+    <ul>
+        <li><a href="{{ asset('/top') }}">ホーム</a></li>
+        <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
+        <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
+    </ul>
+</nav></div>
     </header>
     <div id="row">
         <div id="container">

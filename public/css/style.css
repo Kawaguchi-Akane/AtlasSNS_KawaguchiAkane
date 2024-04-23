@@ -21,6 +21,7 @@ header {
 
     &:focus-visible {
         box-shadow: 0 0 0 2px blue;
+        pointer-events: none;
     }
 
     .inn {
@@ -40,6 +41,7 @@ header {
             border-top: 1px solid #000;
             border-right: 1px solid #000;
             transition: 0.3s ease;
+            pointer-events: none;
         }
     }
 }
@@ -49,6 +51,7 @@ header {
         &:before {
             top: 60%;
             transform: translate(-50%, -60%) rotate(-45deg);
+            pointer-events: none;
         }
     }
 }
@@ -72,7 +75,12 @@ header {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            a {
+                position: relative;
+            }
         }
+
     }
 }
 
