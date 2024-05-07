@@ -78,7 +78,7 @@ header {
 
             a {
                 position: relative;
-                pointer-events: auto
+                pointer-events: auto;
             }
         }
 
