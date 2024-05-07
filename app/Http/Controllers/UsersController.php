@@ -22,6 +22,7 @@ class UsersController extends Controller
         if(!empty($keyword)){
             $users = User::where('username','like', '%'.$keyword.'%')->get();
         }else{
+            //ログインユーザをはじく記述
             $users = User::where('id','<>', Auth::id())->get();
             //dd($users); //dd関数の記述を追加
         }
