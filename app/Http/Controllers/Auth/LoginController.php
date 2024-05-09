@@ -45,6 +45,7 @@ class LoginController extends Controller
 
             $data=$request->only('mail','password');
             // ログインが成功したら、トップページへ
+            // ログインのバリデーション
             if(Auth::attempt($data)){
                 return redirect('/top');
             }

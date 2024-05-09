@@ -1,23 +1,52 @@
 @extends('layouts.login')
 
 @section('content')
-<div class="container">
-<!-- /topに値を送る -->
-{!! Form::open(['url' => '/top'])  !!}
-{{ Form::token() }}
-<div class="form-group">
-  {{ Form::input('text','newPost',null,['required','class' => 'form-control','placeholder' => '投稿内容を入力してください'])}}
-</div>
-<button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="送信"></button>
-{!! Form::close() !!}
-</div>
-<div>
-@foreach($list as $list)
-<tr>
-  <td>{{ $list->user_id }}</td>
-  <td>{{ $list->post }}</td>
-  <td>{{ $list->create_at }}</td>
-</tr>
-@endforeach
-</div>
+    <div class="container">
+
+        {!! Form::open(['url' => '/post/create']) !!}
+        {{ Form::token() }}
+        <div class="form-group">
+
+            {{ Form::input('text', 'newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
+        </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="送信"></button>
+        {!! Form::close() !!}
+    </div>
+    <div>
+        @foreach ($list as $list)
+            <tr>
+                <td>{{ $list->user->username }}</td>
+                <td>{{ $list->post }}</td>
+                <td>{{ $list->create_at }}</td>
+            </tr>
+
+    </div>
+    <div class="content">
+        <!-- 投稿の編集ボタン -->
+        <a class="js-modal-open" href="images/edit.png" post="{{ $list->post }}" post_id="{{ $list->id }}"><img
+                src="images/edit.png" alt=編集></a>
+    </div>
+    <!-- モーダルの中身 -->
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <form action="/post/update" method="post">
+                <textarea name="post_update" class="modal_post"></textarea>
+                <input type="hidden" name="user_id" class="modal_id" value="">
+                <input type="submit" value="更新">
+                {{ csrf_field() }}
+            </form>
+            <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
+    @endforeach
 @endsection

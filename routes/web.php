@@ -31,7 +31,11 @@ Route::post('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 //トップページ
-Route::Post('/top','PostsController@index')->middleware('auth');
+Route::get('/top','PostsController@index')->middleware('auth');
+//投稿処理
+Route::post('/post/create','PostsController@postCreate')->middleware('auth');
+//投稿編集処理
+Route::post('/post/update','PostsController@update')->middleware('auth');
 //プロフィールページ
 Route::get('/profile','UsersController@profile')->middleware('auth');
 //プロフィール編集ページ？
