@@ -26,6 +26,6 @@ class UsersController extends Controller
             $users = User::where('id','<>', Auth::id())->get();
             //dd($users); //dd関数の記述を追加
         }
-        return view('users.search',['users'=>$users],['keyword'=>$keyword]);
+        return view('users.search',['users'=>$users],['keyword'=>$keyword])->with('keyword',$keyword);
     }
 }

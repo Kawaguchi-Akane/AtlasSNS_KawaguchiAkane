@@ -34,6 +34,9 @@
         <!-- 投稿の編集ボタン -->
         <a class="js-modal-open" href="images/edit.png" post="{{ $list->post }}" post_id="{{ $list->id }}"><img
                 src="images/edit.png" alt=編集></a>
+        <!-- 投稿の削除ボタン -->
+        <a class="btn btn-delete" href="/post/{{ $list->id }}/delete"
+            onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" alt=削除></a>
     </div>
     <!-- モーダルの中身 -->
     <div class="modal js-modal">

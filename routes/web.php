@@ -36,6 +36,8 @@ Route::get('/top','PostsController@index')->middleware('auth');
 Route::post('/post/create','PostsController@postCreate')->middleware('auth');
 //投稿編集処理
 Route::post('/post/update','PostsController@update')->middleware('auth');
+//投稿削除
+Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');
 //プロフィールページ
 Route::get('/profile','UsersController@profile')->middleware('auth');
 //プロフィール編集ページ？

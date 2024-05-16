@@ -34,10 +34,10 @@ class PostsController extends Controller
     ]);
     return redirect('/top');
 }
-
+    // 投稿の編集
     public function update(Request $request)
     {
-    //dd($request);
+    // dd($request);
     // 1つ目の処理
     $id = $request->input('user_id');
     $up_post = $request->input('post_update');
@@ -47,5 +47,12 @@ class PostsController extends Controller
     ]);
     // 3つ目の処理
     return redirect('/top');
+    }
+
+    // 投稿削除
+    public function delete($id)
+    {
+        Post::where('id',$id)->delete();
+        return redirect('/top');
     }
 }
