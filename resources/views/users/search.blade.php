@@ -12,11 +12,15 @@
     @else
         <td></td>
     @endif
-
-
-    @foreach ($users as $user)
-        <tr>
-            <td>{{ $user->username }}</td>
-        </tr>
-    @endforeach
+    <div class=search-result>
+        @foreach ($users as $user)
+            <tr>
+                <td>{{ $user->username }}</td>
+                {{-- フォローボタン --}}
+                <p class="btn btn-primary" onclick="location.href='/{{ $user->id }}/following'"><a>フォロー</a></p>
+                {{-- フォロー解除ボタン --}}
+                {{-- <p class="btn btn-primary" onclick="location.href='/{{ $user->id }}/unfollow'"><a>フォロー解除</a></p> --}}
+            </tr>
+        @endforeach
+    </div>
 @endsection

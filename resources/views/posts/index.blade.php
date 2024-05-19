@@ -6,7 +6,8 @@
         {!! Form::open(['url' => '/post/create']) !!}
         {{ Form::token() }}
         <div class="form-group">
-
+            {{-- アイコン画像を表示させる --}}
+            <input type="image" name="images" value=""><img src="{{ asset('storage/' . Auth::user()->images) }}">
             {{ Form::input('text', 'newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
         </div>
         @if ($errors->any())
