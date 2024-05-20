@@ -40,9 +40,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'follows','following_id','followed_id');
     }
-
-    public function isFollowing(User $user)
+    // フォローしているか
+    // $user_id はログイン中のユーザー
+    public function isFollowing(Int $user_id)
     {
-        return $this->follows()->where('following_id', $user->id)->exists();
+        return (bool) $this->following()->where('followed_id', $user_id)->first();
     }
 }

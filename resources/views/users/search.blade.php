@@ -16,10 +16,13 @@
         @foreach ($users as $user)
             <tr>
                 <td>{{ $user->username }}</td>
-                {{-- フォローボタン --}}
-                <p class="btn btn-primary" onclick="location.href='/{{ $user->id }}/following'"><a>フォロー</a></p>
                 {{-- フォロー解除ボタン --}}
-                {{-- <p class="btn btn-primary" onclick="location.href='/{{ $user->id }}/unfollow'"><a>フォロー解除</a></p> --}}
+                @if (auth()->user()->isFollowing($user->id))
+                    <p class="btn unfollow_btn" onclick="location.href='/{{ $user->id }}/unfollow'"><a>フォロー解除</a></p>
+                @else
+                    {{-- フォローボタン --}}
+                    <p class="btn follow_btn" onclick="location.href='/{{ $user->id }}/following'"><a>フォロー</a></p>
+                @endif
             </tr>
         @endforeach
     </div>

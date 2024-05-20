@@ -47,7 +47,7 @@ Route::get('/search','UsersController@search')->middleware('auth');
 //フォローボタンを押下したときの動作
 Route::get('/{id}/following', 'FollowsController@following')->middleware('auth');
 //フォロー解除ボタンを押下したときの動作
-// Route::get('/{id}/unfollow', 'FollowsController@delete')->middleware('auth');
+Route::get('/{id}/unfollow', 'FollowsController@unfollow')->middleware('auth');
 //フォローリストページ
 Route::get('/follow-list','PostsController@followlist')->middleware('auth');
 //フォロワーリストページ
