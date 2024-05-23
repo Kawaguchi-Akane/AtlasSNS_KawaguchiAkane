@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
@@ -19,41 +20,43 @@
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
 </head>
+
 <body>
     <header>
         <div id = "head">
 
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-        <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
-        <!--アコーディオンメニュー-->
-        <div id = "accordion">
-        <button type="button" class="menu-btn">
-            <span class="inn"></span>
-</button>
+            <h1><a href="/top"><img src="images/atlas.png"></a></h1>
+            <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
+            <!--アコーディオンメニュー-->
+            <div id = "accordion">
+                <button type="button" class="menu-btn">
+                    <span class="inn"></span>
+                </button>
 
-<nav class="menu">
-    <ul>
-        <li><a href="{{ asset('/top') }}">ホーム</a></li>
-        <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
-        <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
-    </ul>
-</nav></div>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="{{ asset('/top') }}">ホーム</a></li>
+                        <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
+                        <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
+                    </ul>
+                </nav>
+            </div>
     </header>
     <div id="row">
         <div id="container">
             @yield('content')
-        </div >
+        </div>
         <div id="side-bar">
             <div id="confirm">
                 <p>{{ Auth::user()->username }}さんの</p>
                 <div>
-                <p>フォロー数</p>
-                <p>〇〇名</p>
+                    <p>フォロー数</p>
+                    <p>{{ Auth::user()->following()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
                 <div>
-                <p>フォロワー数</p>
-                <p>〇〇名</p>
+                    <p>フォロワー数</p>
+                    <p>{{ Auth::user()->followed()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
@@ -66,4 +69,5 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ asset('./js/script.js') }}"></script>
 </body>
+
 </html>

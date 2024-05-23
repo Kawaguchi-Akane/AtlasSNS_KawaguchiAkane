@@ -32,6 +32,9 @@ Route::post('/added', 'Auth\RegisterController@added');
 //ログイン中のページ
 //トップページ
 Route::get('/top','PostsController@index')->middleware('auth');
+//フォロー・フォロワー数表示
+// Route::get('/top','FollowsController@show');
+
 //投稿処理
 Route::post('/post/create','PostsController@postCreate')->middleware('auth');
 //投稿編集処理
@@ -49,9 +52,9 @@ Route::get('/{id}/following', 'FollowsController@following')->middleware('auth')
 //フォロー解除ボタンを押下したときの動作
 Route::get('/{id}/unfollow', 'FollowsController@unfollow')->middleware('auth');
 //フォローリストページ
-Route::get('/follow-list','PostsController@followlist')->middleware('auth');
+Route::get('/follow-list','PostsController@followList')->middleware('auth');
 //フォロワーリストページ
-Route::get('/follower-list','PostsController@followerlist')->middleware('auth');
+Route::get('/follower-list','PostsController@followerList')->middleware('auth');
 
 //ログアウト
 Route::get('/logout','Auth\LoginController@logout');
