@@ -3,7 +3,7 @@
 @section('content')
     {{-- フォロワーアイコン --}}
     @foreach ($followings_users as $following_user)
-        {{-- $userから$followed_userを抽出 --}}
+        {{-- $userから$following_userを抽出 --}}
         <div>
             <a href="/top">
                 <img src=" {{ asset('storage/' . $following_user->images) }}">

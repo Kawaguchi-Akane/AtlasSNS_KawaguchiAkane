@@ -1,14 +1,14 @@
 @extends('layouts.login')
 
 @section('content')
-    {{-- フォロワーアイコン --}}
+    {{-- フォローアイコン --}}
     @foreach ($followeds_users as $followed_user)
         {{-- $userから$followed_userを抽出 --}}
         <div>
-            <img src=" {{ asset('storage/' . $followed_user->images) }}">
+            <a href="/top"><img src=" {{ asset('storage/' . $followed_user->images) }}"></a>
         </div>
     @endforeach
-    {{-- フォロワーリスト --}}
+    {{-- フォローリスト --}}
     @foreach ($posts as $post)
         <div>
             <p>名前：{{ $post->user->username }}</p>

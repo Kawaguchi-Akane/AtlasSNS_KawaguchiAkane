@@ -25,8 +25,8 @@
     <header>
         <div id = "head">
 
-            <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <p>{{ Auth::user()->username }}さん<img src="images/icon1.png"></p>
+            <a href="/top"><img src="images/atlas.png"></a>
+            <p>{{ Auth::user()->username }}さん<img src="{{ asset('storage/' . Auth::user()->images) }}"></p>
             <!--アコーディオンメニュー-->
             <div id = "accordion">
                 <button type="button" class="menu-btn">

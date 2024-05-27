@@ -11,11 +11,24 @@ class PostsController extends Controller
 {
     public function index(){
     // Postテーブルからレコード情報を取得
-    $list=Post::get();
+    $lists=Post::
+    whereIn('user_id' , Auth::user()->following()->pluck('followed_id'))
+    ->orWhere('user_id' , Auth::id())
+    ->get();
     // bladeへ帰す際にデータを送る
-    return view('posts.index',['list'=>$list]);
-
+    return view('posts.index',['lists'=>$lists]);
 }
+
+// フォローしているかの確認
+public function followList()
+    {
+        // フォローしているユーザーのidを取得
+        $following_id = Auth::user()->following()->pluck('followed_id');
+
+        $posts = Post::with('user')->whereIn('user_id' , $following_id)->get();
+        $followeds_users=User::whereIn('id' , $following_id)->get();
+        return redirect('/top');
+    }
 
   // 投稿の登録処理
     public function postCreate(Request $request){
