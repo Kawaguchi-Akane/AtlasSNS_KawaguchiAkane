@@ -19,8 +19,8 @@ class PostsController extends Controller
     return view('posts.index',['lists'=>$lists]);
 }
 
-// フォローしているかの確認
-public function followList()
+    // フォローしているかの確認
+    public function followList()
     {
         // フォローしているユーザーのidを取得
         $following_id = Auth::user()->following()->pluck('followed_id');

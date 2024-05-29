@@ -25,7 +25,7 @@
     <header>
         <div id = "head">
 
-            <a href="/top"><img src="images/atlas.png"></a>
+            <a href="/top"><img src="{{ asset('images/atlas.png') }} "></a>
             <p>{{ Auth::user()->username }}さん<img src="{{ asset('storage/' . Auth::user()->images) }}"></p>
             <!--アコーディオンメニュー-->
             <div id = "accordion">
@@ -36,7 +36,7 @@
                 <nav class="menu">
                     <ul>
                         <li><a href="{{ asset('/top') }}">ホーム</a></li>
-                        <li><a href="{{ asset('/profile') }}">プロフィール</a></li>
+                        <li><a href="{{ asset('/updateProfile') }}">プロフィール編集</a></li>
                         <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
                     </ul>
                 </nav>

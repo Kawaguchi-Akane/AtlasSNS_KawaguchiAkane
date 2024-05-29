@@ -8,8 +8,10 @@
         <div class="form-group">
             {{-- アイコン画像を表示させる --}}
             <input type="image" name="images" value=""><img src="{{ asset('storage/' . Auth::user()->images) }}">
+            {{-- ポスト作成投稿枠 --}}
             {{ Form::input('text', 'newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
         </div>
+        {{-- ポストに何も記載されていない場合のエラー表示 --}}
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -19,12 +21,13 @@
                 </ul>
             </div>
         @endif
+        {{-- ポスト投稿ボタン --}}
         <button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="送信"></button>
         {!! Form::close() !!}
     </div>
     {{-- アイコン画像を表示させる --}}
     @foreach ($lists as $list)
-        <a href="/top"><img src="{{ asset('storage/' . Auth::user()->images) }}"></a>
+        <a href="/profile/{{ $list->user_id }}"><img src="{{ asset('storage/' . $list->user->images) }}"></a>
         <tr>
             <td>{{ $list->user->username }}</td>
             <td>{{ $list->post }}</td>

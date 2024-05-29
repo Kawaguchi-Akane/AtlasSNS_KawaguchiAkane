@@ -11,6 +11,7 @@ class Post extends Model
     ];
 
     public function user(){
+        // 1対多の「1」側のため単数形
         return $this->belongsTo('App\User');
     }
 }

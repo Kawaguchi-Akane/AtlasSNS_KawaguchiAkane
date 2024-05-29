@@ -38,10 +38,16 @@ Route::post('/post/create','PostsController@postCreate')->middleware('auth');
 Route::post('/post/update','PostsController@update')->middleware('auth');
 //投稿削除
 Route::get('/post/{id}/delete', 'PostsController@delete')->middleware('auth');
+
 //プロフィールページ
-Route::get('/profile','UsersController@profile')->middleware('auth');
-//プロフィール編集ページ？
-Route::get('/profile','UsersController@profile')->middleware('auth');
+Route::get('/profile/{id}','UsersController@userProfile')->middleware('auth');
+//プロフィールページ　フォローボタンを押下したときの動作
+Route::get('/{id}/following', 'UsersController@following')->middleware('auth');
+//プロフィールページ　フォロー解除ボタンを押下したときの動作
+Route::get('/{id}/unfollow', 'UsersController@unfollow')->middleware('auth');
+
+//プロフィール編集ページ
+Route::get('/updateProfile','UsersController@updateProfile')->middleware('auth');
 //ユーザー検索ページ
 Route::get('/search','UsersController@search')->middleware('auth');
 //フォローボタンを押下したときの動作
