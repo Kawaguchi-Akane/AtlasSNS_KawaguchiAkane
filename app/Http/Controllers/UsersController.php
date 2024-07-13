@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 use App\Post;
@@ -22,9 +23,46 @@ class UsersController extends Controller
         // bladeへ帰す際にデータを送る
         return view('users.profile',['lists'=>$lists],['users'=>$users]);
     }
-
-    public function updateProfile(){
+    //プロフィール編集画面へ飛ぶ
+    public function update($id){
         return view('users.updateProfile');
+    }
+    //プロフィール編集機能
+    public function updateProfile(Request $request){
+        //dd($request);
+
+        $request->validate([
+                'username' => 'required|max:12|min:2',
+                'mail' => 'required|max:40|min:5|unique:users,mail,'.Auth::user()->mail.',mail',
+                'password' => 'required|max:20|min:8|confirmed',
+                'bio' => 'required|max:150',
+                'image' => 'required|image|mimes:jpg,png,bmp,gif,svg'
+            ]);
+        $id = $request->input('id');
+        $update = [
+            'username' => $request->input('username'),
+            'mail' => $request->input('mail'),
+            'bio' => $request->input('bio'),
+            'password' => bcrypt($request->input('password'))
+        ];
+
+        // 画像が入力された場合のみ更新
+        // filled() 指定したキーの有無 && 値が入力されているか、キーが存在しており、かつ値が入力されていたらtrue。
+        if ($request->hasFile('image')) {
+            // $update配列に'image'というキーに対して、バリデーションを実装
+            // $変数[''] = ;←連想配列言置ける要素の追加や更新を行うためのコード
+            //getClientOriginalNameでオリジナルの名前が取れる。
+
+            $file=$request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images', $file);
+            //dd($file);
+            User::where('id', $id)->update(['images'=>$file]);
+        }
+
+        // まとめてupdate関数
+        User::where('id', $id)->update($update);
+
+        return redirect('/top');
     }
     //検索機能実装
     public function search(Request $request){
@@ -75,4 +113,5 @@ class UsersController extends Controller
     return back();
 
     }
+
 }

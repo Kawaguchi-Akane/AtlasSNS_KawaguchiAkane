@@ -50,7 +50,7 @@ class PostsController extends Controller
     // 投稿の編集
     public function update(Request $request)
     {
-    // dd($request);
+    dd($request);
     // 1つ目の処理
     $id = $request->input('user_id');
     $up_post = $request->input('post_update');

@@ -47,7 +47,11 @@ Route::get('/{id}/following', 'UsersController@following')->middleware('auth');
 Route::get('/{id}/unfollow', 'UsersController@unfollow')->middleware('auth');
 
 //プロフィール編集ページ
-Route::get('/updateProfile','UsersController@updateProfile')->middleware('auth');
+Route::get('/{id}/updateProfile','UsersController@update')->middleware('auth');
+//プロフィール編集機能
+Route::post('/profile/update','UsersController@updateProfile')->middleware('auth');
+
+
 //ユーザー検索ページ
 Route::get('/search','UsersController@search')->middleware('auth');
 //フォローボタンを押下したときの動作

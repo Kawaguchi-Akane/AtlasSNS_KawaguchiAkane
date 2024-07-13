@@ -36,7 +36,7 @@
                 <nav class="menu">
                     <ul>
                         <li><a href="{{ asset('/top') }}">ホーム</a></li>
-                        <li><a href="{{ asset('/updateProfile') }}">プロフィール編集</a></li>
+                        <li><a href="{{ Auth::user()->id }}/updateProfile">プロフィール編集</a></li>
                         <li><a href="{{ asset('/logout') }}">ログアウト</a></li>
                     </ul>
                 </nav>
