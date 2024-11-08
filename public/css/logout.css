@@ -1,10 +1,155 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
+    opacity: 0.85;
 }
 
-body{
-    height: 100%;
-    background: #186AC9;
+body {
+    background: rgba(0, 0, 0, 0);
+    background: linear-gradient(#0268C7 20%, #3C9AF0, #FBE230);
+    text-align: center;
+    color: #fff;
+}
+
+input {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+}
+
+.tittle {
+    width: 8%;
+}
+
+.tittle2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.tittle3 {
+    font-size: 18px;
+}
+
+.main {
+    margin-top: 6%;
+}
+
+.login-screen {
+    background: rgba(0, 0, 0, 0.2);
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+    letter-spacing: -1px;
+    font-size: 90%;
+    margin: 0 auto;
+    width: 250px;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.input-field {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 6px;
+    text-align: left;
+}
+
+.input-field-new {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 15px;
+    text-align: left;
+}
+
+.input-field-new item {
+    margin-bottom: px;
+}
+
+.input-field-into {
+    margin-bottom: 20px;
+}
+
+.text-box {
+    background-color: #fff;
+    width: 95%;
+    border-radius: 4px;
+    padding: 0.5em;
+}
+
+
+.button-login {
+    background-color: red;
+    width: 100px;
+    height: 30px;
+    margin-left: auto;
+    border-radius: 5px;
+}
+
+.button-login input {
+    color: #fff;
+    height: 30px;
+}
+
+.button-login-2 {
+    background-color: red;
+    margin: auto;
+    width: 100px;
+    height: 30px;
+    margin-left: auto;
+    border-radius: 5px;
+}
+
+.button-login-2 p {
+    color: #fff;
+    font-size: 12px;
+}
+
+.button-login-2 a {
+    line-height: 28px;
+    color: inherit;
+}
+
+.new-login {
+    color: #fff;
+    text-decoration: underline;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.new-login a {
+    color: inherit;
+}
+
+.clear1,
+.clear2 {
+    font-weight: bold;
+}
+
+.clear1 {
+    font-size: 110%;
+}
+
+.clear2 {
+    font-size: 90%;
+    margin-bottom: 40px;
+    margin-top: 3px;
+    letter-spacing: 0em;
+}
+
+.clear4 {
+    margin-top: 3px;
+    margin-bottom: 30px;
+}
+
+.error-text {
+    color: red;
+    text-align: left;
+    margin-top: 20px;
 }

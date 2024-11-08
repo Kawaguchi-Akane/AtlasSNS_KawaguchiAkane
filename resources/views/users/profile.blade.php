@@ -1,7 +1,11 @@
 @extends('layouts.login')
 
 @section('content')
-    <img src=" {{ asset('storage/' . $users->images) }}">
+    @if (Auth::user()->images == null)
+        <img src="image/icon1.png">
+    @else
+        <img src=" {{ asset('storage/images/' . Auth::user()->images) }}">
+    @endif
     <p>ユーザー名 {{ $users->username }}</p>
     <p>自己紹介 {{ $users->bio }}</p>
 

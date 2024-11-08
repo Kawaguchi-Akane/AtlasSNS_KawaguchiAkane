@@ -7,7 +7,8 @@
         {{ Form::token() }}
         <div class="form-group">
             {{-- アイコン画像を表示させる --}}
-            <input type="image" name="images" value=""><img src="{{ asset('storage/' . Auth::user()->images) }}">
+            <input type="image" name="images" value=""><img src="{{ asset('storage/' . Auth::user()->images) }}"
+                class=icon-image>
             {{-- ポスト作成投稿枠 --}}
             {{ Form::input('text', 'newPost', null, ['class' => 'form-control', 'placeholder' => '投稿内容を入力してください']) }}
         </div>
@@ -27,14 +28,12 @@
     </div>
     {{-- アイコン画像を表示させる --}}
     @foreach ($lists as $list)
-        <a href="/profile/{{ $list->user_id }}"><img src="{{ asset('storage/' . $list->user->images) }}"></a>
+        <div><a href="/profile/{{ $list->user_id }}"><img src="{{ asset('storage/' . $list->user->images) }}"></a></div>
         <tr>
             <td>{{ $list->user->username }}</td>
             <td>{{ $list->post }}</td>
             <td>{{ $list->updated_at }}</td>
         </tr>
-
-        </div>
         {{-- ログインしているユーザーならば、編集ボタンと削除ボタンを出現させる --}}
         @if (Auth::id() == $list->user_id)
             <div class="content">
@@ -46,18 +45,18 @@
                     onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" alt=削除></a>
             </div>
         @endif
-        <!-- モーダルの中身 -->
-        <div class="modal js-modal">
-            <div class="modal__bg js-modal-close"></div>
-            <div class="modal__content">
-                <form action="/post/update" method="post">
-                    <textarea name="post_update" class="modal_post"></textarea>
-                    <input type="hidden" name="user_id" class="modal_id" value="">
-                    <input type="submit" value="更新">
-                    {{ csrf_field() }}
-                </form>
-                <a class="js-modal-close" href="">閉じる</a>
-            </div>
-        </div>
     @endforeach
+    <!-- モーダルの中身 -->
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <form action="/post/update" method="post">
+                <textarea name="post_update" class="modal_post"></textarea>
+                <input type="hidden" name="user_id" class="modal_id" value="">
+                <input type="submit" value="更新">
+                {{ csrf_field() }}
+            </form>
+            <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
 @endsection

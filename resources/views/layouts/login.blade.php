@@ -23,12 +23,11 @@
 
 <body>
     <header>
-        <div id = "head">
-
-            <a href="/top"><img src="{{ asset('images/atlas.png') }} "></a>
-            <p>{{ Auth::user()->username }}さん<img src="{{ asset('storage/' . Auth::user()->images) }}"></p>
+        <div class = "head">
+            <a class=logo-main href="/top"><img src="{{ asset('images/atlas.png') }} "></a>
+            <p class="right login-icon"><img src="{{ asset('storage/' . Auth::user()->images) }}"></p>
             <!--アコーディオンメニュー-->
-            <div id = "accordion">
+            <div class="right accordion">
                 <button type="button" class="menu-btn">
                     <span class="inn"></span>
                 </button>
@@ -41,6 +40,8 @@
                     </ul>
                 </nav>
             </div>
+            <p class="right header-name">{{ Auth::user()->username }}　さん</p>
+        </div>
     </header>
     <div id="row">
         <div id="container">
